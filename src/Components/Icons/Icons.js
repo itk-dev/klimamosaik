@@ -14,6 +14,7 @@ import Thirteen from './icons/single-rgb-2016-13.svg';
 import Fourteen from './icons/single-rgb-2016-14.svg';
 import Fifthteen from './icons/single-rgb-2016-15.svg';
 import Sixteen from './icons/single-rgb-2016-16.svg';
+import Verdensmaal from './icons/verdensmaal-color-vertical.svg';
 
 const Icon = {
   One,
@@ -32,5 +33,6 @@ const Icon = {
   Fourteen,
   Fifthteen,
   Sixteen,
+  Verdensmaal,
 }
 export default Icon;
