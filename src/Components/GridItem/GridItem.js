@@ -1,124 +1,215 @@
 import styled from 'styled-components'
 import Icon from '../Icons/Icons';
-import { VARIANTS } from "../../constants";
 
-
-const GridItem = ({ variant, title, description, image }) => {
-
+const GridItem = ({ variant, title, description, image, exposed }) => {
   return (
-    <Item className={variant}>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <img src={image} alt=""/>
-      <img src={Icon[variant]} alt=""/>
-    </Item>
+    <Wrapper className={exposed ? "exposed" : ""}>
+      <Item className={variant} style={{ '--background-image': `url(${image}`}}>
+        {exposed ?
+          <>
+            {/* <ItemTitle>{title}</ItemTitle> */}
+            <ItemDescription>{description}</ItemDescription>
+          </>
+          :
+          <></>
+        }
+        <ItemIcon src={Icon[variant]} alt=""/>
+      </Item>
+    </Wrapper>
   );
 }
 
-const Item = styled.div`
+// const ItemTitle = styled.h2`
+//   font-size: var(--font-size-h2);
+//   font-weight: var(--font-weight-h2);
+//   color: white;
+// `
+
+const ItemDescription = styled.p`
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: 1.2;
   color: white;
+  position: absolute;
+  bottom: 22%;
+  left: 1%;
+  width: 85%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  filter: var(--filter-shadow);
+`
+
+const ItemIcon = styled.img`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: 20%;
+`
+
+const Item = styled.div`
+  position: relative;
+  background-image: var(--background-image);
+  background-position: center;
+  background-size: cover;
   border-style: solid;
-  border-width: 2px;
+  border-width: var(--border-width);
   border-color: transparent;
-  width: 25vw;
-  height: 25vh;
+  width: calc(100vw / var(--grid-columns));
+  height: calc(100vh / var(--grid-rows));
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+  }
 
   &.one {
-    --one-color: ${VARIANTS.one.color};
-    background: var(--one-color);
-    border-color: var(--one-color);
+    border-color: var(--color-one);
+    &::before {
+      background-color: var(--color-one);
+    }
   }
 
   &.two {
-    --two-color: ${VARIANTS.two.color};
-    background: var(--two-color);
-    border-color: var(--two-color);
+    border-color: var(--color-two);
+    &::before {
+      background-color: var(--color-two);
+    }
   }
 
   &.tree {
-    --tree-color: ${VARIANTS.tree.color};
-    background: var(--tree-color);
-    border-color: var(--tree-color);
+    border-color: var(--color-tree);
+    &::before {
+      background-color: var(--color-tree);
+    }
   }
 
   &.four {
-    --four-color: ${VARIANTS.four.color};
-    background: var(--four-color);
-    border-color: var(--four-color);
+    border-color: var(--color-four);
+    &::before {
+      background-color: var(--color-four);
+    }
   }
 
   &.five {
-    --five-color: ${VARIANTS.five.color};
-    background: var(--five-color);
-    border-color: var(--five-color);
+    border-color: var(--color-five);
+    &::before {
+      background-color: var(--color-five);
+    }
   }
 
   &.six {
-    --six-color: ${VARIANTS.six.color};
-    background: var(--six-color);
-    border-color: var(--six-color);
+    border-color: var(--color-six);
+    &::before {
+      background-color: var(--color-six);
+    }
   }
 
   &.seven {
-    --seven-color: ${VARIANTS.seven.color};
-    background: var(--seven-color);
-    border-color: var(--seven-color);
+    border-color: var(--color-seven);
+    &::before {
+      background-color: var(--color-seven);
+    }
   }
 
   &.eight {
-    --eight-color: ${VARIANTS.eight.color};
-    background: var(--eight-color);
-    border-color: var(--eight-color);
+    border-color: var(--color-eight);
+    &::before {
+      background-color: var(--color-eight);
+    }
   }
 
   &.nine {
-    --nine-color: ${VARIANTS.nine.color};
-    background: var(--nine-color);
-    border-color: var(--nine-color);
+    border-color: var(--color-nine);
+    &::before {
+      background-color: var(--color-nine);
+    }
   }
 
   &.ten {
-    --ten-color: ${VARIANTS.ten.color};
-    background: var(--ten-color);
-    border-color: var(--ten-color);
+    border-color: var(--color-ten);
+    &::before {
+      background-color: var(--color-ten);
+    }
   }
 
   &.eleven {
-    --eleven-color: ${VARIANTS.eleven.color};
-    background: var(--eleven-color);
-    border-color: var(--eleven-color);
+    border-color: var(--color-eleven);
+    &::before {
+      background-color: var(--color-eleven);
+    }
   }
 
   &.twelve {
-    --twelve-color: ${VARIANTS.twelve.color};
-    background: var(--twelve-color);
-    border-color: var(--twelve-color);
+    border-color: var(--color-twelve);
+    &::before {
+      background-color: var(--color-twelve);
+    }
   }
 
   &.thirteen {
-    --thirteen-color: ${VARIANTS.thirteen.color};
-    background: var(--thirteen-color);
-    border-color: var(--thirteen-color);
+    border-color: var(--color-thirteen);
+    &::before {
+      background-color: var(--color-thirteen);
+    }
   }
 
   &.fourteen {
-    --fourteen-color: ${VARIANTS.fourteen.color};
-    background: var(--fourteen-color);
-    border-color: var(--fourteen-color);
+    border-color: var(--color-fourteen);
+    &::before {
+      background-color: var(--color-fourteen);
+    }
   }
 
-  &.fifthteen {
-    --fifthteen-color: ${VARIANTS.fifthteen.color};
-    background: var(--fifthteen-color);
-    border-color: var(--fifthteen-color);
+  &.fifteen {
+    border-color: var(--color-fifteen);
+    &::before {
+      background-color: var(--color-fifteen);
+    }
   }
 
   &.sixteen {
-    --sixteen-color: ${VARIANTS.sixteen.color};
-    background: var(--sixteen-color);
-    border-color: var(--sixteen-color);
+    border-color: var(--color-sixteen);
+    &::before {
+      background-color: var(--color-sixteen);
+    }
   }
 
+  .exposed &{
+    width: calc((100vw / var(--grid-columns)) * var(--grid-expose));
+    height: calc((100vh / var(--grid-rows)) *  var(--grid-expose));
+    animation: expose;
+    animation-duration: 1.2s;
+    transform-origin: bottom;
+    transition-timing-function: cubic-bezier(0.26, 0.34, 0.49, 0.98);
+  }
+
+  &.animate-in {
+    animation: expose;
+  }
+
+  &.animate-out {
+    animation: expose;
+    animation-direction: alternate;
+  }
+
+`
+
+const Wrapper = styled.div`
+  &.exposed {
+    position: absolute;
+    top: calc(100vh / var(--grid-rows));
+    left: calc(100vw / var(--grid-columns));
+  }
 `
 
 export default GridItem;
